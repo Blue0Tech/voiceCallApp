@@ -10,6 +10,13 @@ const myVideo = document.createElement("video");
 myVideo.muted = true;
 
 let myStream;
+navigator.mediaDevices.getUserMedia({
+    audio: true,
+    video: false
+}).then((stream)=>{
+    myStream = stream;
+    addVideoStream(myVideo,myStream);
+});
 
 function addVideoStream(video, stream) {
     video.srcObject = stream;
